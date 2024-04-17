@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Point-In-Context: Understanding Point Cloud via In-Context Learning">
+  <meta name="keywords" content="In-context learning, Point cloud analysis, Multi-task learning, Part segmentation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Point-In-Context: Understanding Point Cloud via In-Context Learning</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            <span class="highlight">P</span>oint-<span class="highlight">I</span>n-<span class="highlight">C</span>ontext: Understanding Point Cloud via In-Context Learning
+          </h1>
+            <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Mengyuan Liu<sup>1</sup>,
+              Zhongbin Fang<sup>2, <i class="fas fa-envelope"></i> <!-- 添加邮箱图标 --></sup>
+              Xia Li<sup>3, <i class="fas fa-envelope"></i><!-- 添加邮箱图标 --></sup>
+              Joachim M. Buhmann<sup>3</sup>,
+              Xiangtai Li<sup>4</sup>,
+              Chen Change Loy<sup>4</sup>
+            </span>
+          </div>
+
+          <div class="is-size-6 publication-authors">
+            <span class="author-block"><sup>1</sup>National Key Laboratory of General Artificial Intelligence, Shenzhen Graduate School, Peking University</span><br />
+            <span class="author-block"><sup>2</sup>Sun Yat-sen University&nbsp;</span>
+            <span class="author-block"><sup>3</sup>Department of Computer Science, ETH Zurich&nbsp;</span>
+            <span class="author-block"><sup>4</sup>S-Lab, Nanyang Technological University&nbsp;</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2306.08659.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+
+              <span class="link-block">
+                <a href="https://github.com/fanglaosi/Point-In-Context"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img id="teaser" src="./static/media/teaser.jpg" alt="Teaser Image" height="100%">
+      <h2 class="subtitle has-text-centered">
+        Our work is the first to explore in-context learning for 3D point cloud understanding.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <h2 class="title is-3">Overview.</h2>
+      <div class="content has-text-justified">
+        <p>
+          This work is the extended version of our conference paper: <b>Explore In-Context Learning for 3D Point Cloud
+          Understanding, in NeurIPS (Spotlight), 2023.</b> We make more significant contributions in this extension
+          to make a full exploration of 3D point cloud in-context learning:<br />
+          <li>Within the 3D in-context learning framework, we further propose <b>Point-In-Context-Segmenter (PIC-S)</b>. In particular,
+          we propose In-Context Labeling and In-Context Enhancing to improve both performance and generalization capability in 3D
+          point cloud part segmentation tasks. Furthermore, our PIC-S
+          can seamlessly integrate additional segmented datasets without
+          redundant label points. </li>
+          <li>We establish the <b>Human & Object
+          Segmentation benchmark</b>, which comprises four available point
+          cloud datasets on human and object segmentation, including
+          ShapeNetPart, Human3D, BEHAVE, and AKB-48. Our goal is
+          to fully evaluate the performance of models trained jointly on
+          multiple segmentation datasets, as well as their generalization
+          on unseen datasets. </li>
+          <li>We conduct extensive experiments on
+          the Human & Object Segmentation benchmark to validate our
+          PIC-S model. Compared to other models, our PIC-S achieves the
+          <b>SOTA</b> performance. Furthermore, we show that PIC-S can produce
+          excellent results on <b>out-of-domain</b> part segmentation datasets,
+          which makes our work more applicable in real-world scenarios.</li>
+        </p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">        
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            With the emergence of large-scale models trained on diverse datasets, in-context learning has emerged as a promising
+            paradigm for multitasking, notably in natural language processing and image processing. However, its application in 3D point cloud
+            tasks remains largely unexplored. In this work, we introduce Point-In-Context (PIC), a novel framework for 3D point cloud understanding
+            via in-context learning. We address the technical challenge of extending masked point modeling to 3D point clouds effectively by
+            introducing a Joint Sampling module and propose a vanilla version of PIC called Point-In-Context-Generalist (PIC-G). PIC-G is designed
+            as a generalist model for various 3D point cloud tasks, with both inputs and outputs modeled as coordinates. In this paradigm, the
+            challenging segmentation task is achieved by assigning coordinates for each category; thus, the closest to the predictions is chosen as
+            the final prediction.
+          </p>
+          <p>
+            To break the limitation by the fixed label-coordinate assignment, which has poor generalization upon novel classes,
+            we propose two novel training strategies, In-Context Labeling and In-Context Enhancing, forming an extended version of PIC named
+            Point-In-Context-Segmenter (PIC-S), targeting improving dynamic context labeling and model training. By utilizing dynamic in-context
+            labels and extra in-context pairs, PIC-S achieves enhanced performance and generalization capability in and across part segmentation
+            datasets. It is worth noting that PIC is a general framework so that other tasks or datasets can be seamlessly introduced into our PIC
+            through a unified data format. We conduct extensive experiments to validate the versatility and adaptability of our proposed methods in
+            handling a wide range of tasks and segmenting multi-datasets. Our PIC-S is especially capable of generalizing unseen datasets and
+            performing novel part segmentation by customizing prompts.
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+
+        <h2 class="title is-3">Point-In-Context-Generalist (PIC-G)</h2>
+        <img id="teaser" src="./static/media/framework.jpg" alt="Teaser Image" height="100%">
+        <div class="content has-text-justified">
+          <b>Overall scheme of our Point-In-Context-Generalist.</b> Top: Training pipeline of the Masked Point Modeling (MPM) framework.
+            During training, each sample comprises two pairs of input and target point clouds that tackle the same task. These pairs are fed into
+            the transformer model to perform the masked point reconstruction task, which follows a random masking process. Bottom: In-context
+            inference on multitask. Our Point-In-Context could infer results on various downstream point cloud tasks, including reconstruction,
+            denoising, registration, and part segmentation.
+        </div>
+
+        
+        <br><br>
+
+
+        <h3 class="title is-3">Features</h3>
+        <div class="content has-text-justified">
+          <b>In-context learning for 3D understanding</b>
+            <ul>
+              <li>The first work to explore the application of in-context learning in the 3D domain.</li>
+              <li>A new framework for tackling multiple tasks (four tasks), which are unified into the same input-output space.</li>
+              <li>Can improve the performance of our Point-In-Context (Sep & Cat) by selecting higher-quality prompts.</li>
+            </ul>
+          <b>New benchmark for 3D point cloud multi-tasking</b>
+            <ul>
+              <li>A new multi-task benchmark for evaluating the capability of processing multiple tasks, including reconstruction, denoising, registration, and part segmentation.</li>
+            </ul>
+          <b>Impressive performance and strong generalization capability</b>
+            <ul>
+              <li>Surpasses classical models (PointNet, DGCNN, PCT, PointMAE), which are equipped with multi-task heads.</li>
+              <li>Surpasses even task-specific models (siMLPe, EqMotion, STCFormer, GLA-GCN, MotionBERT) on some tasks.</li>
+              <li>Surpasses even task-specific models (PointNet, DGCNN, PCT) on registration when given higher-quality prompts.</li>
+            </ul>
+        </div>
+
+        
+        <br><br>
+
+        
+        <h3 class="title is-3">Visualization</h3>
+        <div class="content has-text-justified">
+          <br>
+          <b>Visualization of PIC-G</b>
+          <br>
+          Visualization of predictions from PIC-G-Sep on
+          ShapeNet In-Context Datasets in different tasks, such as
+          reconstruction, denoising, registration, and part segmentation. For
+          part segmentation, we visualize the generated target together with
+          the mapping back, both adding category-specific colors for a better
+          look.
+          <br>
+          <img src="./static/media/visualization_main.jpg" alt="Teaser Image" height="100%">
+<!--        </div>-->
+
+<!--        <div class="content has-text-justified">-->
+<!--          <br>-->
+<!--          <b>Visualization of PIC-G</b>-->
+          <br>
+          Visualization of comparison results between PIC-G and
+          multitask models on reconstruction (lines 1-2), denoising (lines
+          3-4), and registration (lines 5-6), where our models can generate
+          more accurate predictions than other multitask models.
+          <br>
+          <img src="./static/media/Comparison_vis.jpg" alt="Teaser Image" height="100%">
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+
+        <h2 class="title is-3">Point-In-Context-Segmenter (PIC-S)</h2>
+<!--        <div class="content has-text-justified">-->
+<!--          In-Context Labeling and In-Context Enhancing.-->
+<!--        </div>-->
+
+
+        <br><br>
+
+
+        <h3 class="title is-3">Features</h3>
+        <div class="content has-text-justified">
+          <b>New benchmark for 3D point cloud multi-dataset part segmentation</b>
+            <ul>
+              <li>A new multi-dataset joint training benchmark comprising four available point
+          cloud datasets on human and object segmentation, including
+          ShapeNetPart, Human3D, BEHAVE, and AKB-48.</li>
+            </ul>
+          <b>More superior segmentation performance and stronger generalization capability</b>
+            <ul>
+              <li>PIC-S achieves SOTA results on multi-dataset segmentation benchmark. Compared to PIC-G, PIC-S is more adept at integrating multiple datasets in segmentation tasks. </li>
+              <li>PIC-S achieves SOTA results on one-shot testing on out-of-domain dataset~(AKB-48), which is not included in the training set.</li>
+              <li>PIC-S can an accurately generate unique part segmentation results via customized prompts.</li>
+            </ul>
+        </div>
+
+
+        <br><br>
+
+
+        <h3 class="title is-3">Visualization</h3>
+        <div class="content has-text-justified">
+          <br>
+          <b>Visualization of PIC-S</b>
+          <br>
+          Visualization of predictions obtained by PIC-S-Sep and their corresponding ground truth on Human & Object Segmentation In-Context Datasets
+          <br>
+          <img src="./static/media/segmentation_vis.jpg" alt="Teaser Image" height="100%">
+        </div>
+
+        <div class="content has-text-justified">
+          <br>
+          <b>Comparison with PIC-G</b>
+          <br>
+          Visualization of comparison results between two versions of PIC: PIC-S (extended version) and PIC-G (vanilla version).
+          <br>
+          <img src="./static/media/comparison_vis_seg.jpg" alt="Teaser Image" height="100%">
+        </div>
+
+        <div class="content has-text-justified">
+          <br>
+          <b>Generalization of PIC-S</b>
+          <br>
+          We use customized prompts to guide the model to perform specified part segmentation. The red
+          boxes indicate the output of the PIC-S.
+          <br>
+          <img src="./static/media/generalization_segmentation.jpg" alt="Teaser Image" height="100%">
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    If you find our work useful in your research, please consider citing:
+    <pre><code>
+      @article{fang2024explore,
+        title={Explore in-context learning for 3d point cloud understanding},
+        author={Fang, Zhongbin and Li, Xiangtai and Li, Xia and Buhmann, Joachim M and Loy, Chen Change and Liu, Mengyuan},
+        journal={Advances in Neural Information Processing Systems},
+        volume={36},
+        year={2024}
+      }
+    </code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://github.com/Necolizer/ISTA-Net" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+        <div class="content">
+          <p>
+            Template of this page is borrowed from <a
+              href="https://nerfies.github.io/">Nerfies</a>. Grateful to this great work.
+
+          </p>
+        </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
