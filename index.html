@@ -35,16 +35,18 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title">
-            <span class="highlight">P</span>oint-<span class="highlight">I</span>n-<span class="highlight">C</span>ontext: Understanding Point Cloud via In-Context Learning
+            Novel Part Segmentation in Point Cloud with <span class="highlight">A</span>daptive <span class="highlight">P</span>rompts
           </h1>
             <div class="is-size-5 publication-authors">
             <span class="author-block">
               Mengyuan Liu<sup>1</sup>,
-              Zhongbin Fang<sup>2, <i class="fas fa-envelope"></i> <!-- 添加邮箱图标 --></sup>
+              Zhongbin Fang<sup>2, 4, <i class="fas fa-envelope"></i> <!-- 添加邮箱图标 --></sup>
               Xia Li<sup>3, <i class="fas fa-envelope"></i><!-- 添加邮箱图标 --></sup>
               Joachim M. Buhmann<sup>3</sup>,
-              Xiangtai Li<sup>4</sup>,
-              Chen Change Loy<sup>4</sup>
+              Deheng Ye<sup>4</sup>,
+              <br>
+              Xiangtai Li<sup>5</sup>,
+              Chen Change Loy<sup>5</sup>
             </span>
           </div>
 
@@ -52,20 +54,21 @@
             <span class="author-block"><sup>1</sup>National Key Laboratory of General Artificial Intelligence, Shenzhen Graduate School, Peking University</span><br />
             <span class="author-block"><sup>2</sup>Sun Yat-sen University&nbsp;</span>
             <span class="author-block"><sup>3</sup>Department of Computer Science, ETH Zurich&nbsp;</span>
-            <span class="author-block"><sup>4</sup>S-Lab, Nanyang Technological University&nbsp;</span>
+            <span class="author-block"><sup>4</sup>Tencent Inc.&nbsp;</span>
+            <span class="author-block"><sup>5</sup>S-Lab, Nanyang Technological University&nbsp;</span>
           </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
-              <span class="link-block">
-                <a href="https://arxiv.org/pdf/2404.12352.pdf"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
+<!--              <span class="link-block">-->
+<!--                <a href="https://arxiv.org/pdf/2404.12352.pdf"-->
+<!--                   class="external-link button is-normal is-rounded is-dark">-->
+<!--                  <span class="icon">-->
+<!--                      <i class="ai ai-arxiv"></i>-->
+<!--                  </span>-->
+<!--                  <span>arXiv</span>-->
+<!--                </a>-->
+<!--              </span>-->
 
               <span class="link-block">
                 <a href="https://github.com/fanglaosi/Point-In-Context"
@@ -89,10 +92,13 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img id="teaser" src="./static/media/teaser.jpg" alt="Teaser Image" height="100%">
-      <h2 class="subtitle has-text-centered">
-        Our work is the first to explore in-context learning for 3D point cloud understanding.
-      </h2>
+      <img id="teaser" src="./static/media/AP_teaser.jpg" alt="Teaser Image" height="100%">
+      <p class="content has-text-justified">
+        Illustration of our proposed Adaptive Prompting Model~(APM).
+        <b>(a)</b> Our proposed APM for multiple part segmentation datasets in 3D point clouds.
+        <b>(b)</b> Our APM achieves SOTA in diverse part segmentation post a single unified training.
+        <b>(c)</b> Our APM can generalize to novel part segmentation tasks never seen before.
+      </p>
     </div>
   </div>
 </section>
@@ -103,27 +109,19 @@
       <h2 class="title is-3">Overview.</h2>
       <div class="content has-text-justified">
         <p>
-          This work is the extended version of our conference paper: <b>Explore In-Context Learning for 3D Point Cloud
-          Understanding, in NeurIPS (Spotlight), 2023.</b> We make more significant contributions in this extension
-          to make a full exploration of 3D point cloud in-context learning:<br />
-          <li>Within the 3D in-context learning framework, we further propose <b>Point-In-Context-Segmenter (PIC-S)</b>. In particular,
-          we propose In-Context Labeling and In-Context Enhancing to improve both performance and generalization capability in 3D
-          point cloud part segmentation tasks. Furthermore, our PIC-S
-          can seamlessly integrate additional segmented datasets without
-          redundant label points. </li>
-          <li>We establish the <b>Human & Object
-          Segmentation benchmark</b>, which comprises four available point
-          cloud datasets on human and object segmentation, including
-          ShapeNetPart, Human3D, BEHAVE, and AKB-48. Our goal is
-          to fully evaluate the performance of models trained jointly on
-          multiple segmentation datasets, as well as their generalization
-          on unseen datasets. </li>
-          <li>We conduct extensive experiments on
-          the Human & Object Segmentation benchmark to validate our
-          PIC-S model. Compared to other models, our PIC-S achieves the
-          <b>SOTA</b> performance. Furthermore, we show that PIC-S can produce
-          excellent results on <b>out-of-domain</b> part segmentation datasets,
-          which makes our work more applicable in real-world scenarios.</li>
+          Our main contributions are summarized as follows:
+          <li>Within the 3D prompting framework, we propose the <b>Adaptive Prompting Model~(APM)</b>.
+          In particular, we propose <b>Adaptive Labeling</b> and <b>Prompt Enhancing</b> to improve performance and generalization
+          capability in diverse 3D point cloud part segmentation tasks after a single unified training.
+          Furthermore, our APM can seamlessly integrate additional segmented datasets without redundant label points. </li>
+          <li>We establish the <b>Multi-Entity Segmentation datasets</b>, which comprises four available point
+          cloud datasets on human and object segmentation, including ShapeNetPart, Human3D, BEHAVE, and AKB-48.
+          Our goal is to fully evaluate the performance of models trained jointly on multiple segmentation datasets,
+          as well as their generalization on unseen datasets. </li>
+          <li>We conduct extensive experiments on the Multi-Entity Segmentation datasets to validate our APM framework.
+          Compared to other models, our APM achieves <b>SOTA</b> performance. Furthermore, we show that APM can produce
+          excellent results on novel part segmentation datasets or customized part segmentation tasks, which makes
+          our work more applicable in real-world scenarios.</li>
         </p>
 
       </div>
@@ -141,24 +139,20 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            With the emergence of large-scale models trained on diverse datasets, in-context learning has emerged as a promising
-            paradigm for multitasking, notably in natural language processing and image processing. However, its application in 3D point cloud
-            tasks remains largely unexplored. In this work, we introduce Point-In-Context (PIC), a novel framework for 3D point cloud understanding
-            via in-context learning. We address the technical challenge of extending masked point modeling to 3D point clouds effectively by
-            introducing a Joint Sampling module and propose a vanilla version of PIC called Point-In-Context-Generalist (PIC-G). PIC-G is designed
-            as a generalist model for various 3D point cloud tasks, with both inputs and outputs modeled as coordinates. In this paradigm, the
-            challenging segmentation task is achieved by assigning coordinates for each category; thus, the closest to the predictions is chosen as
-            the final prediction.
-          </p>
-          <p>
-            To break the limitation by the fixed label-coordinate assignment, which has poor generalization upon novel classes,
-            we propose two novel training strategies, In-Context Labeling and In-Context Enhancing, forming an extended version of PIC named
-            Point-In-Context-Segmenter (PIC-S), targeting improving dynamic context labeling and model training. By utilizing dynamic in-context
-            labels and extra in-context pairs, PIC-S achieves enhanced performance and generalization capability in and across part segmentation
-            datasets. It is worth noting that PIC is a general framework so that other tasks or datasets can be seamlessly introduced into our PIC
-            through a unified data format. We conduct extensive experiments to validate the versatility and adaptability of our proposed methods in
-            handling a wide range of tasks and segmenting multi-datasets. Our PIC-S is especially capable of generalizing unseen datasets and
-            performing novel part segmentation by customizing prompts.
+            Novel part segmentation in 3D point clouds involves segmenting parts not included in the training dataset or from unseen combinations of parts.
+            In this paper, we attempt to address novel part segmentation on unseen datasets or tasks by using prompting technology due to its features of efficient model adaptation domain-generalization capability.
+            Recent works explore prompting in 3D point cloud segmentation by associating label points with the fixed XYZ coordinates of each category.
+            However, this method of using fixed label points limits the model to generalize to new datasets, as well as introduces redundancy in label points as datasets increase, hindering model performance.
+            To overcome these limitations, we propose the <b>Adaptive Prompting Model (APM)</b> based on vanilla transformer architecture.
+            Our APM comprises two core training strategies: Adaptive Labeling (AL) and Prompt Enhancing (PE).
+            Adaptive Labeling replaces fixed label point coordinates with dynamic label points, aligning the semantics of shared parts by randomly assigning label points within each point cloud.
+            Prompt Enhancing employs various corruption operations to provide the model with more diverse point cloud pairs. This enables the model to learn more robust mapping relationships from the prompt pairs.
+            Notably, our APM method can seamlessly integrate new part segmentation datasets without causing label redundancy.
+            It requires only the necessary prompts.
+            Furthermore, our APM requires only a single training stage and does not necessitate fine-tuning.
+            Despite this, extensive experiments demonstrate that APM significantly outperforms other models in one-shot testing on the novel segmentation dataset.
+            It also allows for the execution of the novel part segmentation task through customized prompts.
+            Remarkably, our APM achieves state-of-the-art performance in multi-dataset joint training.
           </p>
         </div>
       </div>
@@ -175,14 +169,14 @@
     <div class="columns is-centered">
       <div class="column is-four-fifths">
 
-        <h2 class="title is-3">Point-In-Context-Generalist (PIC-G)</h2>
-        <img id="teaser" src="./static/media/framework.jpg" alt="Teaser Image" height="100%">
+        <h3 class="title is-3">Model Architecture</h3>
+        <img id="framework" src="./static/media/AP_framework.jpg" alt="Teaser Image" height="100%">
         <div class="content has-text-justified">
-          <b>Overall scheme of our Point-In-Context-Generalist.</b> Top: Training pipeline of the Masked Point Modeling (MPM) framework.
-            During training, each sample comprises two pairs of input and target point clouds that tackle the same task. These pairs are fed into
-            the transformer model to perform the masked point reconstruction task, which follows a random masking process. Bottom: In-context
-            inference on multitask. Our Point-In-Context could infer results on various downstream point cloud tasks, including reconstruction,
-            denoising, registration, and part segmentation.
+          <b>Overall scheme of our Adaptive Prompting Model~(APM).</b> Top: Training pipeline of the Masked Point Modeling~(MPM)
+          framework with Adaptive Labeling and Prompt Enhancing strategies. During training, each sample comprises two pairs of
+          input and target point clouds that tackle the same task. These pairs are fed into the transformer model to perform the
+          masked point reconstruction task, which follows a random masking process. Bottom: Inference on Multi-Entity Segmentation Datasets.
+          Our APM could infer results across various part segmentation datasets, including ShapeNetPart, Human3D, BEHAVE, and AKB-48.
         </div>
 
         
@@ -191,77 +185,7 @@
 
         <h3 class="title is-3">Features</h3>
         <div class="content has-text-justified">
-          <b>In-context learning for 3D understanding</b>
-            <ul>
-              <li>The first work to explore the application of in-context learning in the 3D domain.</li>
-              <li>A new framework for tackling multiple tasks (four tasks), which are unified into the same input-output space.</li>
-              <li>Can improve the performance of our Point-In-Context (Sep & Cat) by selecting higher-quality prompts.</li>
-            </ul>
-          <b>New benchmark for 3D point cloud multi-tasking</b>
-            <ul>
-              <li>A new multi-task benchmark for evaluating the capability of processing multiple tasks, including reconstruction, denoising, registration, and part segmentation.</li>
-            </ul>
-          <b>Impressive performance and strong generalization capability</b>
-            <ul>
-              <li>Surpasses classical models (PointNet, DGCNN, PCT, PointMAE), which are equipped with multi-task heads.</li>
-              <li>Surpasses even task-specific models (siMLPe, EqMotion, STCFormer, GLA-GCN, MotionBERT) on some tasks.</li>
-              <li>Surpasses even task-specific models (PointNet, DGCNN, PCT) on registration when given higher-quality prompts.</li>
-            </ul>
-        </div>
-
-        
-        <br><br>
-
-        
-        <h3 class="title is-3">Visualization</h3>
-        <div class="content has-text-justified">
-          <br>
-          <b>Visualization of PIC-G</b>
-          <br>
-          Visualization of predictions from PIC-G-Sep on
-          ShapeNet In-Context Datasets in different tasks, such as
-          reconstruction, denoising, registration, and part segmentation. For
-          part segmentation, we visualize the generated target together with
-          the mapping back, both adding category-specific colors for a better
-          look.
-          <br>
-          <img src="./static/media/visualization_main.jpg" alt="Teaser Image" height="100%">
-<!--        </div>-->
-
-<!--        <div class="content has-text-justified">-->
-<!--          <br>-->
-<!--          <b>Visualization of PIC-G</b>-->
-          <br>
-          Visualization of comparison results between PIC-G and
-          multitask models on reconstruction (lines 1-2), denoising (lines
-          3-4), and registration (lines 5-6), where our models can generate
-          more accurate predictions than other multitask models.
-          <br>
-          <img src="./static/media/Comparison_vis.jpg" alt="Teaser Image" height="100%">
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-four-fifths">
-
-        <h2 class="title is-3">Point-In-Context-Segmenter (PIC-S)</h2>
-<!--        <div class="content has-text-justified">-->
-<!--          In-Context Labeling and In-Context Enhancing.-->
-<!--        </div>-->
-
-
-        <br><br>
-
-
-        <h3 class="title is-3">Features</h3>
-        <div class="content has-text-justified">
-          <b>New benchmark for 3D point cloud multi-dataset part segmentation</b>
+          <b>New benchmark for 3D point cloud multi-dataset novel part segmentation</b>
             <ul>
               <li>A new multi-dataset joint training benchmark comprising four available point
           cloud datasets on human and object segmentation, including
@@ -269,24 +193,35 @@
             </ul>
           <b>More superior segmentation performance and stronger generalization capability</b>
             <ul>
-              <li>PIC-S achieves SOTA results on multi-dataset segmentation benchmark. Compared to PIC-G, PIC-S is more adept at integrating multiple datasets in segmentation tasks. </li>
-              <li>PIC-S achieves SOTA results on one-shot testing on out-of-domain dataset~(AKB-48), which is not included in the training set.</li>
-              <li>PIC-S can accurately generate unique part segmentation results via customized prompts.</li>
+              <li>APM achieves SOTA results on multi-entity novel part segmentation benchmark. Compared to PIC, APM is more adept at integrating multiple datasets in segmentation tasks. </li>
+              <li>APM achieves SOTA results on one-shot testing on the out-of-domain dataset (AKB-48), which is not included in the training set.</li>
+              <li>APM can accurately generate unique part segmentation results via customized prompts.</li>
             </ul>
         </div>
 
 
         <br><br>
 
+        <h3 class="title is-3">Adaptive Labeling & Prompt Enhancing</h3>
+        <img id="AL_PE" src="./static/media/AP_AL_PE.jpg" alt="Teaser Image" height="100%">
+        <div class="content has-text-justified">
+          <b>(a) Comparison of generating targets between Adaptive Labeling (our APM) and pre-defined label map (PIC).</b>
+          <i>P</i> represents the number of all parts (<i>P</i> &gg; <i>N<sub>B</sub></i> &gt; |<i>C<sub>i</sub></i>|).
+          <b>(b) Illustration of Prompt Enhancing.</b> We first randomly apply common corruptions on a clean point cloud
+          and construct in-context pairs. Then we train our APM on the combined training set of Multi-Entity Segmentation Datasets and constructed prompt pairs.
+        </div>
 
+        <br><br>
+
+        
         <h3 class="title is-3">Visualization</h3>
         <div class="content has-text-justified">
           <br>
-          <b>Visualization of PIC-S</b>
+          <b>Visualization of APM</b>
           <br>
           Visualization of predictions obtained by PIC-S-Sep and their corresponding ground truth on Human & Object Segmentation In-Context Datasets
           <br>
-          <img src="./static/media/segmentation_vis.jpg" alt="Teaser Image" height="100%">
+          <img src="./static/media/AP_segmentation_vis.jpg" alt="Teaser Image" height="100%">
         </div>
 
         <div class="content has-text-justified">
@@ -295,15 +230,15 @@
           <br>
           Visualization of comparison results between two versions of PIC: PIC-S (extended version) and PIC-G (vanilla version).
           <br>
-          <img src="./static/media/comparison_vis_seg.jpg" alt="Teaser Image" height="100%">
+          <img src="./static/media/AP_comparison_vis_seg.jpg" alt="Teaser Image" height="100%">
         </div>
 
         <div class="content has-text-justified">
           <br>
-          <b>Generalization of PIC-S</b>
+          <b>Generalization of APM</b>
           <br>
           We use customized prompts to guide the model to perform specified part segmentation. The red
-          boxes indicate the output of the PIC-S.
+          boxes indicate the output of the APM.
           <br>
           <img src="./static/media/generalization_segmentation.jpg" alt="Teaser Image" height="100%">
         </div>
